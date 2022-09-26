@@ -89,9 +89,5 @@ namespace ViewConsole
             }
         }
 
-        private static int Validation(int answer)
-        {
-
-        }
     }
 }
