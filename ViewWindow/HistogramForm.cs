@@ -17,14 +17,10 @@ namespace ViewWindow
         public HistogramForm()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+            this.Text = "Распределение по специальностям";
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;            
         }
-
-        private void zedGraphControl1_Load(object sender, EventArgs e)
-        {
-
-        }      
+ 
         public void ShowHistogram(BL logic)
         {
             GraphPane pane = new GraphPane();
