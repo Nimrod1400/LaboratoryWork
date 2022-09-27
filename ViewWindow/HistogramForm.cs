@@ -30,8 +30,7 @@ namespace ViewWindow
             GraphPane pane = new GraphPane();
             pane.CurveList.Clear();
 
-            BarItem curve = pane.AddBar("Количество студентов", 
-                null, logic.DistributionByGroups(), 
+            pane.AddBar("Количество студентов", null, logic.DistributionByScpecialities(), 
                 Color.Blue);
 
             pane.XAxis.Type = AxisType.Text;

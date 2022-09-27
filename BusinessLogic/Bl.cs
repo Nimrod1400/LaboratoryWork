@@ -61,7 +61,7 @@ namespace BusinessLogic
             return result;
         }
 
-        public double[] DistributionByGroups()
+        public double[] DistributionByScpecialities()
         {
             List<double> amount = new List<double>();
 
