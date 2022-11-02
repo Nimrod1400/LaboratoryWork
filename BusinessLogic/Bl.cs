@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccesLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace BusinessLogic
 {
     public class BL
     {
+        IRepository<Student> repository = new EntityFrameworkRepository<Student>();
         private List<Student> students { get; set; } = new List<Student>();
 
         public void AddStudent(string name, string spec, string group)
@@ -38,37 +40,31 @@ namespace BusinessLogic
             foreach (Student student in students)
             {
                 if (!result.Contains(student.Speciality))
-                {
                     result.Add(student.Speciality);
-                }
             }
 
             return result.ToArray();
         }
 
-        public double AmountInSpeciality(string spec)
-        {
-            double result = 0.0;
-
-            foreach(Student student in students)
-            {
-                if (student.Speciality == spec)
-                {
-                    result++;
-                }
-            }
-             
-            return result;
-        }
-
         public double[] DistributionByScpecialities()
         {
+            double AmountInSpeciality(string spec)
+            {
+                double result = 0.0;
+
+                foreach (Student student in students)
+                {
+                    if (student.Speciality == spec)
+                        result++;
+                }
+
+                return result;
+            }
+
             List<double> amount = new List<double>();
 
             foreach (string spec in GetSpecialities())
-            {
                 amount.Add(AmountInSpeciality(spec));
-            }
 
             return amount.ToArray();
         }

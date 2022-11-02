@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccesLayer\DataAccesLayer.csproj">
+      <Project>{29c5db92-3c5c-4444-b9b7-b88b92765515}</Project>
+      <Name>DataAccesLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lab1\Model.csproj">
       <Project>{5327feed-0982-44e2-80a1-7aac664d3bd2}</Project>
       <Name>Model</Name>
