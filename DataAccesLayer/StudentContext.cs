@@ -10,7 +10,7 @@ namespace DataAccesLayer
 {
     internal class StudentContext : DbContext
     {
-        public StudentContext() : base("DBConnection") { }
+        public StudentContext() : base("DbConnection") { }
         
         public DbSet<Student> Students { get; set; }
     }

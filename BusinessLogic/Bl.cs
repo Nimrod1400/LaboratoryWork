@@ -10,34 +10,39 @@ namespace BusinessLogic
 {
     public class BL
     {
-        IRepository<Student> repository = new EntityFrameworkRepository<Student>();
-        private List<Student> students { get; set; } = new List<Student>();
+        private IRepository<Student> Repository { get; set; }
+        
+        public BL(IRepository<Student> repository) 
+        {
+            Repository = repository;
+        }
 
         public void AddStudent(string name, string spec, string group)
         {
-            students.Add(new Student { Name = name, Group = group, Speciality = spec });
+            Repository.Add(new Student() { Name = name, Speciality = spec, Group = group });
         }
 
-        public void DeleteStudent(int num)
+        public void DeleteStudent(int index)
         {
-            students.RemoveAt(num);
+            Repository.Delete(TransformIndexIntoID(index));
         }
 
-        public (string, string, string) GetStudent(int num)
+        public (string, string, string) GetStudent(int index)
         {
-            return (students[num].Name, students[num].Speciality, students[num].Group);
+            Student student = Repository.FindById(TransformIndexIntoID(index));
+            return (student.Name, student.Speciality, student.Group);
         }
 
         public int CountStudents()
         {
-            return students.Count;
+            return Repository.GetAll().Count();
         }
 
         public string[] GetSpecialities()
         {
             List<string> result = new List<string>();
 
-            foreach (Student student in students)
+            foreach (Student student in Repository.GetAll())
             {
                 if (!result.Contains(student.Speciality))
                     result.Add(student.Speciality);
@@ -51,13 +56,11 @@ namespace BusinessLogic
             double AmountInSpeciality(string spec)
             {
                 double result = 0.0;
-
-                foreach (Student student in students)
+                foreach (Student student in Repository.GetAll())
                 {
                     if (student.Speciality == spec)
                         result++;
                 }
-
                 return result;
             }
 
@@ -67,6 +70,11 @@ namespace BusinessLogic
                 amount.Add(AmountInSpeciality(spec));
 
             return amount.ToArray();
+        }
+
+        private int TransformIndexIntoID(int index)
+        {
+            return Repository.GetAll().ElementAt(index).ID;
         }
     }
 }

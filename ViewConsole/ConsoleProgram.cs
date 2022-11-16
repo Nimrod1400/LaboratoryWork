@@ -11,7 +11,7 @@ namespace ViewConsole
     internal class ConsoleProgram
     {
         private static BL logic = new BL();
-        private const int AllowedNameLength = 15;
+        private const int AllowedNameLength = 20;
         private const int AllowedSpecialityLength = 35;
         static void Main(string[] args)
         {
@@ -115,13 +115,13 @@ namespace ViewConsole
             string[] studentInfo = Console.ReadLine().Split(';');
 
             string name = studentInfo[0].Trim();
-            if (name.Length > AllowedNameLength)
+            if (name.Length >= AllowedNameLength)
             {
                 throw new Exception($"Имя студента не должно быть длиннее {AllowedNameLength} символов.");
             }
 
             string spec = studentInfo[1].Trim();
-            if (spec.Length > AllowedSpecialityLength)
+            if (spec.Length >= AllowedSpecialityLength)
             {
                 throw new Exception($"Специальность студента не должна быть длиннее {AllowedSpecialityLength} символов.");
             }

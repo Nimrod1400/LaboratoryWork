@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewConsole", "ViewConsole\ViewConsole.csproj", "{0D6C055F-9739-4069-BBC2-D28C13BC4CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewWindow", "ViewWindow\ViewWindow.csproj", "{A77AE10F-80F2-4072-B9E8-213BE36E16DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewWindowsForm", "ViewWindow\ViewWindowsForm.csproj", "{A77AE10F-80F2-4072-B9E8-213BE36E16DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccesLayer", "DataAccesLayer\DataAccesLayer.csproj", "{29C5DB92-3C5C-4444-B9B7-B88B92765515}"
 EndProject

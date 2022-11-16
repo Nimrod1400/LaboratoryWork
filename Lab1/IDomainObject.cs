@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab1
 {
-    internal interface IDomainObject
+    public interface IDomainObject
     {
         int ID { get; set; }
     }
