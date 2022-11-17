@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,14 @@ namespace ViewConsole
 {
     internal class ConsoleProgram
     {
-        private static BL logic = new BL();
+        private static BL Logic;
+
+        public ConsoleProgram() 
+        {
+            IKernel ninjectKernel = new StandardKernel(new SimpleConfigModule());
+            Logic = ninjectKernel.Get<BL>();
+        }
+
         private const int AllowedNameLength = 20;
         private const int AllowedSpecialityLength = 35;
         static void Main(string[] args)
@@ -72,7 +80,7 @@ namespace ViewConsole
                 if (answer == 3)
                 {
                     Console.WriteLine();
-                    ViewStudents(logic);
+                    ViewStudents(Logic);
                     Console.WriteLine();
                 }
 
@@ -128,18 +136,18 @@ namespace ViewConsole
 
             string group = studentInfo[2].Trim();
 
-            logic.AddStudent(name, spec, group);
+            Logic.AddStudent(name, spec, group);
         }
 
         private static void DeleteStudent()
         {
             Console.WriteLine("Введите номер студента в списке: ");
             int num = Int32.Parse(Console.ReadLine());
-            if (num > logic.CountStudents() || num <= 0)
+            if (num > Logic.CountStudents() || num <= 0)
             {
                 throw new Exception("В списке нет студента с таким номером.");
             }
-            logic.DeleteStudent(num - 1);
+            Logic.DeleteStudent(num - 1);
         }
     }
 }
