@@ -11,8 +11,8 @@ namespace BusinessLogic
     public class BL
     {
         private IRepository<Student> Repository { get; set; }
-        
-        public BL(IRepository<Student> repository) 
+
+        public BL(IRepository<Student> repository)
         {
             Repository = repository;
         }
